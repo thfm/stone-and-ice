@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 7721323354888235608, guid: 331b264f4c9552d489f32e3ca93ec6a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7721323354888235608, guid: 331b264f4c9552d489f32e3ca93ec6a0,
         type: 3}
@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 7721323354888235608, guid: 331b264f4c9552d489f32e3ca93ec6a0,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 331b264f4c9552d489f32e3ca93ec6a0, type: 3}
@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 1755339112}
   - component: {fileID: 1755339107}
   - component: {fileID: 1755339111}
+  - component: {fileID: 1755339113}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -460,6 +461,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardsSpeed: 15
   sidewaysForce: 0.25
+  rotationSpeed: 20
+  rotationResetSpeed: 7
+  sliding: 0
 --- !u!54 &1755339112
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -476,6 +480,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &1755339113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755339106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e824d531d27077d489d11de240167d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2058900164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -501,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 3000965070214564836, guid: c405d6e1516d2534298539bb8b2d4afc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3000965070214564836, guid: c405d6e1516d2534298539bb8b2d4afc,
         type: 3}
@@ -546,7 +562,7 @@ PrefabInstance:
     - target: {fileID: 3000965070214564836, guid: c405d6e1516d2534298539bb8b2d4afc,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c405d6e1516d2534298539bb8b2d4afc, type: 3}
