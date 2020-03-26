@@ -8,6 +8,10 @@ public class CharacterCollision : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision other) {
-        movement.sliding = (other.gameObject.tag == "IceFloor");
+        if(other.gameObject.tag == "Obstacle") {
+            GetComponent<CharacterData>().isDead = true;
+        } else {
+            movement.sliding = (other.gameObject.tag == "IceFloor");
+        }
     }
 }
