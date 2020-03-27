@@ -387,6 +387,8 @@ GameObject:
   - component: {fileID: 1755339114}
   - component: {fileID: 1755339111}
   - component: {fileID: 1755339113}
+  - component: {fileID: 1755339115}
+  - component: {fileID: 1755339116}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -511,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e824d531d27077d489d11de240167d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieOnObstacleCollision: 1
 --- !u!114 &1755339114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +527,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+--- !u!114 &1755339115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755339106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411b3afded1766f49be573d6e0094da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateKey: 49
+  effectTime: 2
+  cooldownTime: 2
+  activated: 0
+  cooledDown: 0
+  slowMotionFactor: 0.5
+--- !u!114 &1755339116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755339106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc0ee41035208a449435ca24e9ff42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateKey: 50
+  effectTime: 5
+  cooldownTime: 2
+  activated: 0
+  cooledDown: 0
+  collision: {fileID: 1755339113}
 --- !u!1001 &1910349347
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,14 +13,13 @@ public class GameManager : MonoBehaviour {
             character.GetComponent<CharacterData>().isDead = true;
         }
 
-        if(character.GetComponent<CharacterData>().isDead) {
+        if(character.GetComponent<CharacterData>().isDead && !levelOver) {
             character.GetComponent<CharacterMovement>().enabled = false;
-            RestartLevel();
-        }
-    }
-
-    private void RestartLevel() {
-        if(!levelOver) {
+            foreach(CharacterAbility ability in character.GetComponents<
+                    CharacterAbility>()) {
+                if(ability.activated) { ability.Deactivate(); }
+                ability.enabled = false;
+            }
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
             levelOver = true;
         }
