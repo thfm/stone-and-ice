@@ -3,38 +3,46 @@
 public abstract class CharacterAbility : MonoBehaviour {
     public KeyCode activateKey;
 
-    [Range(0.5f, 10)] public float effectTime;
-    [Range(0, 10)] public float cooldownTime;
+    [Range(0.5f, 10)] public float effectDuration;
+    [Range(0, 10)] public float cooldownDuration;
 
-    [HideInInspector] public bool activated;
-    [HideInInspector] public bool cooledDown;
+    public enum State {
+        Ready,
+        Using,
+        Cooling
+    }
 
-    private float timeSinceActivation = 0;
+    public State state;
+
+    [HideInInspector] public float timer = 0;
 
     void Start() {
-        if(activated) {
-            Deactivate();
-            activated = false;
-        }
-        cooledDown = true;
+        state = State.Ready;
     }
 
     void Update() {
-        if(Input.GetKeyDown(activateKey) && !activated && cooledDown) {
-            Activate();
-            activated = true;
-            cooledDown = false;
-            timeSinceActivation = 0;
-        }
-
-        timeSinceActivation += Time.deltaTime;
-        if(timeSinceActivation >= effectTime && activated) {
-            Deactivate();
-            activated = false;
-        }
-
-        if(timeSinceActivation >= effectTime + cooldownTime) {
-            cooledDown = true;
+        switch(state) {
+            case State.Ready:
+                if(Input.GetKeyDown(activateKey)) {
+                    Activate();
+                    timer = 0;
+                    state = State.Using;
+                }
+                break;
+            case State.Using:
+                timer += Time.deltaTime;
+                if(timer >= effectDuration) {
+                    Deactivate();
+                    timer = 0;
+                    state = State.Cooling;
+                }
+                break;
+            case State.Cooling:
+                timer += Time.deltaTime;
+                if(timer >= cooldownDuration) {
+                    state = State.Ready;
+                }
+                break;
         }
     }
 

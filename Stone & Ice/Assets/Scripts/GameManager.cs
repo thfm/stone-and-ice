@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour {
             character.GetComponent<CharacterMovement>().enabled = false;
             foreach(CharacterAbility ability in character.GetComponents<
                     CharacterAbility>()) {
-                if(ability.activated) { ability.Deactivate(); }
+                if(ability.state == CharacterAbility.State.Using) {
+                    ability.Deactivate();
+                }
                 ability.enabled = false;
             }
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
