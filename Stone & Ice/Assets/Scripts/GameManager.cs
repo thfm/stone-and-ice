@@ -15,13 +15,6 @@ public class GameManager : MonoBehaviour {
 
         if(character.GetComponent<CharacterData>().isDead && !levelOver) {
             character.GetComponent<CharacterMovement>().enabled = false;
-            foreach(CharacterAbility ability in character.GetComponents<
-                    CharacterAbility>()) {
-                if(ability.state == CharacterAbility.State.Using) {
-                    ability.Deactivate();
-                }
-                ability.enabled = false;
-            }
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
             levelOver = true;
         }
