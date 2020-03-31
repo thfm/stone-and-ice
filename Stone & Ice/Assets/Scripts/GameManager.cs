@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour {
 
     [Range(0.1f, 1)] public float musicFadeDuration;
 
+    public GameObject pauseMenu;
+    public KeyCode pauseKey;
+
     private LevelManager levelManager;
-    private bool levelOver = false;
+    private bool gameOver = false;
+    private bool gamePaused = false;
 
     void Start() {
         levelManager = FindObjectOfType<LevelManager>();
@@ -21,23 +25,42 @@ public class GameManager : MonoBehaviour {
             character.GetComponent<CharacterData>().isDead = true;
         }
 
-        if(character.GetComponent<CharacterData>().isDead && !levelOver) {
+        if(character.GetComponent<CharacterData>().isDead && !gameOver) {
             character.GetComponent<CharacterMovement>().enabled = false;
+            StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
-            if(levelManager != null) {
-                StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
+            gameOver = true;
+        }
+
+        if(Input.GetKeyDown(pauseKey)) {
+            if(gamePaused) {
+                ResumeGame();
+            } else {
+                PauseGame();
             }
-            levelOver = true;
         }
     }
 
+    public void PauseGame() {
+        Time.timeScale = 0;
+        levelManager.StopMusic();
+        pauseMenu.SetActive(true);
+        gamePaused = true;
+    }
+
+    public void ResumeGame() {
+        pauseMenu.SetActive(false);
+        levelManager.ResumeMusic();
+        Time.timeScale = 1;
+        gamePaused = false;
+    }
+
     public void ReturnToMenu() {
-        if(!levelOver) {
-            if(levelManager != null) {
-                StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
-            }
+        if(!gameOver) {
+            if(gamePaused) { ResumeGame(); }
+            StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
             Invoke("LoadMenuScene", menuReturnDelay);
-            levelOver = true;
+            gameOver = true;
         }
     }
 
