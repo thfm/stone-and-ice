@@ -4,7 +4,7 @@ public class ScoreManager : MonoBehaviour {
     public Transform character;
 
     [HideInInspector] public int score = 0;
-    [HideInInspector] public static int highScore;
+    [HideInInspector] public int highScore;
 
     [HideInInspector] public bool newBest = false;
 

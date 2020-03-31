@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Endless/Endless.unity
     guid: 676db6414bd55614982051ea7fe81d4c
-  - enabled: 1
-    path: Assets/Scenes/Levels/01StereoMadness/01StereoMadness.unity
-    guid: 6f9f0d6c6506e2f46ba8ce4d1b2f82eb
   m_configObjects: {}

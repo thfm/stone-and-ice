@@ -192,7 +192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 299070311}
   - component: {fileID: 299070312}
-  - component: {fileID: 299070313}
   m_Layer: 5
   m_Name: ScoreIndicator
   m_TagString: Untagged
@@ -235,26 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 328543188}
   distanceText: {fileID: 1752107229}
-  newBestText: {fileID: 1771681777}
---- !u!95 &299070313
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299070310}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04c958e7f0d86e144bb94d315b4019d2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  highScoreText: {fileID: 1771681779}
 --- !u!1 &323941705
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1755339110}
   score: 0
+  highScore: 0
   newBest: 0
 --- !u!4 &328543189
 Transform:
@@ -1132,13 +1113,14 @@ GameObject:
   - component: {fileID: 1771681778}
   - component: {fileID: 1771681780}
   - component: {fileID: 1771681779}
+  - component: {fileID: 1771681781}
   m_Layer: 5
-  m_Name: NewBestText
+  m_Name: HighScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1771681778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1176,7 +1158,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Best!
+  m_text: 'Best: 0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1185,8 +1169,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 7826665
-  m_fontColor: {r: 0.9150943, g: 0.42733178, b: 0.46751517, a: 1}
+    rgba: 4289703855
+  m_fontColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1245,9 +1229,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1771681779}
-    characterCount: 9
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -1276,6 +1260,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771681777}
   m_CullTransparentMesh: 0
+--- !u!95 &1771681781
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771681777}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4de5c8899f6192e419349bc4368c389c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1910349347
 PrefabInstance:
   m_ObjectHideFlags: 0
