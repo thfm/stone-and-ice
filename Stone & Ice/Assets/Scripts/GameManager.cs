@@ -12,13 +12,8 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseMenu;
     public KeyCode pauseKey;
 
-    private LevelManager levelManager;
     private bool gameOver = false;
     private bool gamePaused = false;
-
-    void Start() {
-        levelManager = FindObjectOfType<LevelManager>();
-    }
 
     void Update() {
         if(character.transform.position.y < -1) {
@@ -27,7 +22,6 @@ public class GameManager : MonoBehaviour {
 
         if(character.GetComponent<CharacterData>().isDead && !gameOver) {
             character.GetComponent<CharacterMovement>().enabled = false;
-            StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
             gameOver = true;
         }
@@ -43,14 +37,12 @@ public class GameManager : MonoBehaviour {
 
     public void PauseGame() {
         Time.timeScale = 0;
-        levelManager.StopMusic();
         pauseMenu.SetActive(true);
         gamePaused = true;
     }
 
     public void ResumeGame() {
         pauseMenu.SetActive(false);
-        levelManager.ResumeMusic();
         Time.timeScale = 1;
         gamePaused = false;
     }
@@ -58,7 +50,6 @@ public class GameManager : MonoBehaviour {
     public void ReturnToMenu() {
         if(!gameOver) {
             if(gamePaused) { ResumeGame(); }
-            StartCoroutine(levelManager.FadeMusic(musicFadeDuration));
             Invoke("LoadMenuScene", menuReturnDelay);
             gameOver = true;
         }
