@@ -692,6 +692,7 @@ MonoBehaviour:
   character: {fileID: 1755339110}
   viewDistance: 80
   obstacleGap: 12
+  baseFloorSize: 9
 --- !u!1 &1752107227
 GameObject:
   m_ObjectHideFlags: 0

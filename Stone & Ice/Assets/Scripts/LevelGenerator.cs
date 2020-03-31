@@ -6,6 +6,8 @@ public class LevelGenerator : MonoBehaviour {
     [Range(10, 100)] public float viewDistance;
     [Range(0, 25)] public float obstacleGap;
 
+    [Range(0, 18)] public float baseFloorSize;
+
     private GameObject[] obstacleGroupPrefabs;
     private GameObject[] floorPrefabs;
 
@@ -16,7 +18,10 @@ public class LevelGenerator : MonoBehaviour {
             ("Prefabs/ObstacleGroups");
         floorPrefabs = Resources.LoadAll<GameObject>("Prefabs/Floors");
         pointer = viewDistance;
-        SpawnRandomFloor((viewDistance / 2), viewDistance);
+        SpawnRandomFloor(
+            (viewDistance / 2) - (baseFloorSize / 2),
+            viewDistance + baseFloorSize
+        );
     }
 
     void Update() {
