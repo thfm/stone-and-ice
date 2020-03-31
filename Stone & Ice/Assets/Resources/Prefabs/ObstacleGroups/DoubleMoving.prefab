@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0f56692b638ad41b1226c30dc360e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 0
 --- !u!1001 &8828511024007130427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: motionOffset.x
       value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996087386491187532, guid: 3958ee50c8ca69f47b11abacfed74cb6,
+        type: 3}
+      propertyPath: speed
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3958ee50c8ca69f47b11abacfed74cb6, type: 3}
@@ -192,6 +196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996087386491187532, guid: 3958ee50c8ca69f47b11abacfed74cb6,
+        type: 3}
+      propertyPath: speed
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3958ee50c8ca69f47b11abacfed74cb6, type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
     public Transform character;
@@ -6,9 +7,12 @@ public class LevelManager : MonoBehaviour {
     [HideInInspector] public float progress;
 
     private LevelData levelData;
+    private AudioSource music;
 
     void Start() {
         levelData = GetComponent<LevelData>();
+        music = GetComponent<AudioSource>();
+        music.Play();
     }
 
     void Update() {
@@ -16,5 +20,18 @@ public class LevelManager : MonoBehaviour {
         if(progress >= 1) {
             FindObjectOfType<GameManager>().ReturnToMenu();
         }
+    }
+
+    public void StopMusic() {
+        music.Stop();
+    }
+
+    public IEnumerator FadeMusic(float fadeDuration) {
+        float initialVolume = music.volume;
+        while(music.volume > 0) {
+            music.volume -= initialVolume / fadeDuration * Time.deltaTime;
+            yield return null;
+        }
+        music.Stop();
     }
 }
