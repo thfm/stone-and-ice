@@ -9,8 +9,7 @@ public class ScoreManager : MonoBehaviour {
     [HideInInspector] public bool newBest = false;
 
     void Start() {
-        // highScore = PlayerPrefs.GetInt("highScore", 0);
-        highScore = 50;
+        highScore = PlayerPrefs.GetInt("highScore", 0);
     }
 
     void Update() {
