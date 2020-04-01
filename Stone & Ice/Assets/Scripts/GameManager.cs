@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 
     public void ReturnToMenu() {
         if(!gameOver) {
-            StartCoroutine(sceneLoader.FadeToScene("Menu"));
+            sceneLoader.LoadScene("Menu");
             gameOver = true;
         }
     }
