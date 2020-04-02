@@ -2,11 +2,14 @@
 
 public class CameraMovement : MonoBehaviour {
     [Range(1, 10)] public float speed;
+    public Vector3 focusOffset;
+
+    public Transform mainMenu;
 
     private Vector3 targetPosition;
 
     void Start() {
-        MoveTo(new Vector3(0, 2, 0));
+        FocusOn(mainMenu);
     }
 
     void Update() {
@@ -17,7 +20,7 @@ public class CameraMovement : MonoBehaviour {
         );
     }
 
-    public void MoveTo(Vector3 targetPosition) {
-        this.targetPosition = targetPosition;
+    public void FocusOn(Transform objectTransform) {
+        targetPosition = objectTransform.position + focusOffset;
     }
 }
