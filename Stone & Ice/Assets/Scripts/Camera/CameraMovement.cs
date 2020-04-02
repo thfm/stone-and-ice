@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
+    [Range(1, 10)] public float speed;
+
     private Vector3 targetPosition;
 
     void Start() {
@@ -11,7 +13,7 @@ public class CameraMovement : MonoBehaviour {
         transform.position = Vector3.Lerp(
             transform.position,
             targetPosition,
-            Time.deltaTime * 5
+            Time.deltaTime * speed
         );
     }
 
