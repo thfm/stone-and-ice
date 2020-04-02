@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour {
     public SceneLoader sceneLoader;
     [Range(0.5f, 3)] public float restartDelay;
 
-    [Range(0.1f, 1)] public float musicFadeDuration;
-
     public KeyCode returnToMenuKey;
 
     private bool gameOver = false;

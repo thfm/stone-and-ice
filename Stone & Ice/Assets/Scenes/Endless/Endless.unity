@@ -281,7 +281,6 @@ MonoBehaviour:
   character: {fileID: 1755339106}
   sceneLoader: {fileID: 1585072848}
   restartDelay: 1
-  musicFadeDuration: 0.5
   returnToMenuKey: 27
 --- !u!1 &328543187
 GameObject:
@@ -440,11 +439,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 4174352602150147798, guid: 3d0f3f71a9f860948acf8fa23a9d14b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4174352602150147797, guid: 3d0f3f71a9f860948acf8fa23a9d14b6,
         type: 3}
