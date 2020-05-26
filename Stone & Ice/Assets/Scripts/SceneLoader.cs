@@ -3,18 +3,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneLoader : MonoBehaviour {
+public class SceneLoader : MonoBehaviour
+{
     public RawImage blackFade;
 
-    public void LoadScene(string name) {
+    public void LoadScene(string name)
+    {
         StartCoroutine(LoadSceneAfterFade(name));
     }
 
-    public void ReloadCurrentScene() {
+    public void ReloadCurrentScene()
+    {
         LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private IEnumerator LoadSceneAfterFade(string name) {
+    private IEnumerator LoadSceneAfterFade(string name)
+    {
         blackFade.GetComponent<Animator>().SetBool("FadeOut", true);
         yield return new WaitUntil(() => blackFade.color.a == 1);
         SceneManager.LoadScene(name);

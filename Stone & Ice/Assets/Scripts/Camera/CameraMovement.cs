@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour
+{
     [Range(1, 10)] public float speed;
     public Vector3 focusOffset;
 
@@ -8,11 +9,13 @@ public class CameraMovement : MonoBehaviour {
 
     private Vector3 targetPosition;
 
-    void Start() {
+    void Start()
+    {
         FocusOn(mainMenu);
     }
 
-    void Update() {
+    void Update()
+    {
         transform.position = Vector3.Lerp(
             transform.position,
             targetPosition,
@@ -20,7 +23,8 @@ public class CameraMovement : MonoBehaviour {
         );
     }
 
-    public void FocusOn(Transform objectTransform) {
+    public void FocusOn(Transform objectTransform)
+    {
         targetPosition = objectTransform.position + focusOffset;
     }
 }

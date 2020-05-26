@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public GameObject character;
 
     public SceneLoader sceneLoader;
@@ -10,24 +11,30 @@ public class GameManager : MonoBehaviour {
 
     private bool gameOver = false;
 
-    void Update() {
-        if(character.transform.position.y < -1) {
+    void Update()
+    {
+        if (character.transform.position.y < -1)
+        {
             character.GetComponent<CharacterData>().isDead = true;
         }
 
-        if(character.GetComponent<CharacterData>().isDead && !gameOver) {
+        if (character.GetComponent<CharacterData>().isDead && !gameOver)
+        {
             character.GetComponent<CharacterMovement>().enabled = false;
             sceneLoader.Invoke("ReloadCurrentScene", restartDelay);
             gameOver = true;
         }
 
-        if(Input.GetKeyDown(returnToMenuKey)) {
+        if (Input.GetKeyDown(returnToMenuKey))
+        {
             ReturnToMenu();
         }
     }
 
-    public void ReturnToMenu() {
-        if(!gameOver) {
+    public void ReturnToMenu()
+    {
+        if (!gameOver)
+        {
             sceneLoader.LoadScene("Menu");
             gameOver = true;
         }

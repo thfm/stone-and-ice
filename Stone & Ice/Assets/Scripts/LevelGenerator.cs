@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour {
+public class LevelGenerator : MonoBehaviour
+{
     public Transform character;
 
     [Range(10, 100)] public float viewDistance;
@@ -13,7 +14,8 @@ public class LevelGenerator : MonoBehaviour {
 
     private float pointer;
 
-    void Start() {
+    void Start()
+    {
         obstacleGroupPrefabs = Resources.LoadAll<GameObject>
             ("Prefabs/ObstacleGroups");
         floorPrefabs = Resources.LoadAll<GameObject>("Prefabs/Floors");
@@ -24,15 +26,18 @@ public class LevelGenerator : MonoBehaviour {
         );
     }
 
-    void Update() {
-        if(character.position.z + viewDistance > pointer) {
+    void Update()
+    {
+        if (character.position.z + viewDistance > pointer)
+        {
             GameObject spawnedObstacleGroup = SpawnRandomObstacleGroup(pointer);
             GameObject spawnedFloor = SpawnBoundingFloor(spawnedObstacleGroup);
             pointer += spawnedFloor.transform.localScale.z;
         }
     }
 
-    private GameObject SpawnRandomObstacleGroup(float zPosition) {
+    private GameObject SpawnRandomObstacleGroup(float zPosition)
+    {
         return Instantiate(
             SelectRandomPrefab(obstacleGroupPrefabs),
             new Vector3(0, 0, zPosition),
@@ -41,14 +46,16 @@ public class LevelGenerator : MonoBehaviour {
         );
     }
 
-    private GameObject SpawnBoundingFloor(GameObject obstacleGroup) {
+    private GameObject SpawnBoundingFloor(GameObject obstacleGroup)
+    {
         float length = obstacleGroup.GetComponent<ObstacleGroupData>().
             CalculateLength() + obstacleGap;
         float zPosition = obstacleGroup.transform.position.z + (length / 2);
         return SpawnRandomFloor(zPosition, length);
     }
 
-    private GameObject SpawnRandomFloor(float zPosition, float length) {
+    private GameObject SpawnRandomFloor(float zPosition, float length)
+    {
         GameObject spawnedFloor = Instantiate(
             SelectRandomPrefab(floorPrefabs),
             new Vector3(0, -1, zPosition),
@@ -63,7 +70,8 @@ public class LevelGenerator : MonoBehaviour {
         return spawnedFloor;
     }
 
-    private GameObject SelectRandomPrefab(GameObject[] prefabs) {
+    private GameObject SelectRandomPrefab(GameObject[] prefabs)
+    {
         return prefabs[Random.Range(0, prefabs.Length)];
     }
 }

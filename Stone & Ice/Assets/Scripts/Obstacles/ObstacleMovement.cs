@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class ObstacleMovement : MonoBehaviour {
+public class ObstacleMovement : MonoBehaviour
+{
     public Vector3 motionOffset;
     public float speed;
 
     private Vector3 initialPosition;
 
-    void Start() {
+    void Start()
+    {
         initialPosition = transform.position;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         transform.position = Vector3.Slerp(
             initialPosition,
             initialPosition + motionOffset,

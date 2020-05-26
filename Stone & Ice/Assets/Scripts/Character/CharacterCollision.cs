@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 
-public class CharacterCollision : MonoBehaviour {
+public class CharacterCollision : MonoBehaviour
+{
     [HideInInspector] public bool dieOnObstacleCollision = true;
 
     private CharacterMovement movement;
 
-    void Start() {
+    void Start()
+    {
         movement = GetComponent<CharacterMovement>();
     }
 
-    void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Obstacle" && dieOnObstacleCollision) {
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Obstacle" && dieOnObstacleCollision)
+        {
             GetComponent<CharacterData>().isDead = true;
-        } else {
+        }
+        else
+        {
             movement.sliding = (other.gameObject.tag == "IceFloor");
         }
     }

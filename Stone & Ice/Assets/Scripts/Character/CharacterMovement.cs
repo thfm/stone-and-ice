@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : MonoBehaviour
+{
     [Range(5, 50)] public float forwardsSpeed;
     [Range(0.1f, 1)] public float sidewaysForce;
 
@@ -12,15 +13,20 @@ public class CharacterMovement : MonoBehaviour {
     private Rigidbody rb;
     private float alignedRotation = 0;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update() {
+    void Update()
+    {
         CalibrateAlignedRotation();
-        if(sliding) {
+        if (sliding)
+        {
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-        } else {
+        }
+        else
+        {
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
                 Quaternion.Euler(0, alignedRotation, 0),
@@ -29,7 +35,8 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         rb.AddForce(Input.GetAxis("Horizontal") * sidewaysForce, 0, 0,
             ForceMode.VelocityChange);
 
@@ -38,7 +45,8 @@ public class CharacterMovement : MonoBehaviour {
         rb.velocity = velocity;
     }
 
-    private void CalibrateAlignedRotation() {
+    private void CalibrateAlignedRotation()
+    {
         alignedRotation = Mathf.Round(transform.eulerAngles.y / 90) * 90;
     }
 }

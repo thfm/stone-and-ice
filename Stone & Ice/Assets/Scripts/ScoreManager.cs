@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
     public Transform character;
 
     [HideInInspector] public int score = 0;
@@ -8,13 +9,16 @@ public class ScoreManager : MonoBehaviour {
 
     [HideInInspector] public bool newBest = false;
 
-    void Start() {
+    void Start()
+    {
         highScore = PlayerPrefs.GetInt("highScore", 0);
     }
 
-    void Update() {
-        score = (int) character.position.z;
-        if(score > highScore) {
+    void Update()
+    {
+        score = (int)character.position.z;
+        if (score > highScore)
+        {
             highScore = score;
             PlayerPrefs.SetInt("highScore", highScore);
             newBest = true;
