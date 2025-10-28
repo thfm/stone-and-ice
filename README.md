@@ -6,7 +6,7 @@ You can download the game from here: https://thfm.itch.io/stone-and-ice.
 
 ## Gameplay
 
-![Gameplay](https://raw.githubusercontent.com/thfm/resources/master/gameplay.gif)
+![Gameplay](gameplay.gif)
 
 ### Aim
 
